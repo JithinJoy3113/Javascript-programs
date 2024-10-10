@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>Javascript</title>
+        <link rel="stylesheet "href="D:\bootstrap\bootstrap-5.3.3-dist\bootstrap-5.3.3-dist\css\bootstrap.min.css">
+    </head>
+    <body>
+        <div class="questionDiv border border-dark auto">
+            <span class="question fw-bold">Q: Find smallest and largest of three numbers</span><br>
+            Number One:<input class="form-control" id="numOne"> 
+            Number Two:<input class="form-control" id="numTwo">
+            Number Three:<input class="form-control" id="numThree">
+        </div>
+        <div class="button d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary" onclick="largest()">Answer</button>
+        </div>
+        <div class="answerDiv d-flex flex-column border border-dark p-4 w-50 d-flex mx-auto">
+              <span id="answerIdLargest"></span>  
+              <span id="answerIdSmallest"></span>
+        </div>
+        <script src="js/questions.js"></script>
+    </body>
+</head>

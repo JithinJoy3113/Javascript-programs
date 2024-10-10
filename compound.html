@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>Javascript</title>
+        <link rel="stylesheet "href="D:\bootstrap\bootstrap-5.3.3-dist\bootstrap-5.3.3-dist\css\bootstrap.min.css">
+    </head>
+    <body>
+        <div class="questionDiv border border-dark auto">
+            <span class="question">Q: Simple interest</span><br>
+            Principal:<input class="form-control" id="principal">    
+            Interest:<input class="form-control" id="interest">
+            Time:<input class="form-control" id="duration">
+        </div>
+        <div class="button d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary" onclick="compoundInterest()">Answer</button>
+        </div>
+        <div class="answerDiv d-flex flex-column border border-dark p-4 w-50 d-flex mx-auto">
+               compound  Interest:<span id="answerId"></span>
+            </span>
+        </div>
+        <script src="js/questions.js"></script>
+    </body>
+</head>
