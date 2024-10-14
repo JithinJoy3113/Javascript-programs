@@ -244,7 +244,7 @@ function divisibleFiveEleven(){
         if (num<55){
             printOutput('error', 'There are no numbers divisible by both 5 and 11 below 55');
         }
-        for(let i=1;i<=num;i++){
+        for(let i=55;i<=num;i++){
                 var display=document.createElement('span');
                 if(i%5 == 0 && i%11 == 0){
                       display.textContent=i; 
@@ -422,7 +422,7 @@ function stringMiddle(){
 		printOutput('answerId', "There is no middle character for: "+stringOne);
         }
         else{
-        printOutput('answerId', "Middle character of string is: "+stringOne[Math.floor(len/2)]);
+                printOutput('answerId', "Middle character of string is: "+stringOne[Math.floor(len/2)]);
         }
 }
 
@@ -436,8 +436,372 @@ function stringChar(){
                 display=document.createElement('span');
                 display.textContent=string[i];
                 console.log(string[i]);
-                ansDiv.appendChild(display); 
-                                 	
+                ansDiv.appendChild(display);                                  	
         }        
 }
 
+function stringLength(){
+	string=document.getElementById('numOne').value;
+        let strLen=string.length;
+        let length=0;
+        while(string[length]!=undefined){
+ 		length+=1;
+	}
+        printOutput('answerId', "With method: "+strLen+"\nWithout Method: "+length);
+}
+
+function charSearch(){
+        document.getElementById('hideButton').style.visibility="hidden";
+        document.getElementById('showButton').classList.remove('d-none');
+        questionDiv=document.getElementById('questionDiv')	
+        let input=document.createElement('input');
+        input.type="text";
+        input.id="inputId";
+        input.className="inputChar form-control";
+        let label=document.createElement('label');
+        label.id="labelId"
+        label.textContent="Enter the Charcter: ";
+        questionDiv.appendChild(label);
+        questionDiv.appendChild(input);                        
+}
+
+function charSearchBtn(){
+        string=document.getElementById('numOne').value;
+        stringChar=document.getElementById('inputId').value;
+        let arr=[];
+        for (let i=0;i<string.length;i++){
+		if(string[i]==stringChar){
+                	arr.push(i);
+                }
+	}
+        if (arr.length==0){
+                printOutput('answerId', "Character not found");
+        }
+        else{
+        	printOutput('answerId', "Character found in: "+arr);
+        }
+}
+
+function charOccBtn(){
+        string=document.getElementById('numOne').value;
+        stringChar=document.getElementById('inputId').value;
+        let count=0;
+        for (let i=0;i<string.length;i++){
+		if(string[i]==stringChar){
+                	count+=1
+                }
+	}        
+        printOutput('answerId', "Number of Occurence: "+count);               
+}
+
+function charPrefix(){
+	string=document.getElementById('numOne').value;
+        stringChar=document.getElementById('inputId').value;
+        let label=document.getElementById('labelId');
+        label.textContent="Enter the sub string: ";
+        if(stringChar==string.slice(0,stringChar.length)){
+		printOutput('answerId', stringChar+" is the prefix of "+string);
+	}
+	else{
+		printOutput('answerId', stringChar+" is not the prefix of "+string);
+	}
+}
+
+function replaceString(){
+	string=document.getElementById('numOne').value;
+        stringOne=document.getElementById('stringOne').value;
+        stringTwo=document.getElementById('stringTwo').value;
+        if(string.includes(stringOne)){
+        	let newstring=string.replace(stringOne,stringTwo);
+                printOutput('answerId', "New string is: "+newstring);
+        }
+        else{
+  		printOutput('answerId', "No string to replace");
+	}
+        
+}
+
+function stringCase(){
+	string=document.getElementById('numOne').value;
+        let newString="";
+        for (let i=0;i<string.length;i++){
+                let char=string[i];
+        	if(char==char.toLowerCase()){
+                        newString+=char.toUpperCase();                      
+                }
+                else{
+ 			newString+=char.toLowerCase();
+		}
+        }
+        printOutput('answerId', newString);
+}
+ 
+function countChar(){
+	string=document.getElementById('numOne').value;
+        ansDiv=document.getElementById('ansDiv');
+        let vowels='aeiouAEIOU';
+	let digits='1234567890';
+        var count={vowels:0,special_character:0,digits:0};
+        for(let i=0; i<string.length; i++){
+		if(vowels.includes(string[i])){
+			count.vowels+=1;
+                }
+                else if(digits.includes(string[i])){
+			count.digits+=1;
+                }
+		else if(!string[i].match(/[a-zA-Z0-9]/)){
+			count.special_character+=1;
+                }
+	}
+        for (let key in count){
+		let element=document.createElement('span');
+                element.textContent=key+" : "+count[key];
+                ansDiv.appendChild(element);
+        }
+}
+
+function countVowels(){
+	string=document.getElementById('numOne').value;
+        ansDiv=document.getElementById('ansDiv');
+        let vowels='aeiouAEIOU';
+        var count={vowels:0,consonents:0};
+        for(let i=0; i<string.length; i++){
+		if(vowels.includes(string[i])){
+			count.vowels+=1;
+                }   
+		else{
+			count.consonents+=1;
+                }
+	}
+        for (let key in count){
+		let element=document.createElement('span');
+                element.textContent=key+" : "+count[key];
+                ansDiv.appendChild(element);
+        }
+}
+
+function fibonacci(){
+        num=document.getElementById('numOne').value;
+        ansDiv=document.getElementById('ansDiv');
+        let a=0;
+        let b=1;
+        let c;
+        for(let i=0;i<num;i++){
+        	let element=document.createElement('span');
+                element.textContent=a;
+                ansDiv.appendChild(element);
+                c=a+b;
+                a=b;
+                b=c;
+       }        
+}
+
+function menuBased(){        
+        var option=Number(document.getElementById('numOne').value);
+        if (option==5){             
+                document.getElementById('questionDiv').style.display="none";
+                document.getElementById('exitDiv').classList.remove('d-none'); 
+                document.getElementById('menuStart').classList.remove('d-none');   
+             }
+        else{
+		document.getElementById('menu').style.visibility='hidden';
+                document.getElementById('calBtn').classList.remove('d-none');
+                document.getElementById('questionDiv').style.display="none";
+                document.getElementById('inputDiv').style.display='none';
+                document.getElementById('inputNumbers').classList.remove('d-none');
+                document.getElementById('ansDiv').classList.remove('d-none');
+	}
+}
+function calculate(){
+	var option=Number(document.getElementById('numOne').value);
+        var calNumOne=document.getElementById('calNumTwo').value;
+        var calNumTwo=document.getElementById('calNumThree').value;
+        let result;
+        switch (option){
+        	case 1:    
+                        console.log(option);                
+    			result=Number(calNumOne)+Number(calNumTwo);
+                        printOutput('answerId', "Sum is: "+result);
+                        break;
+		case 2: 
+    			result=Number(calNumOne)-Number(calNumTwo);
+                        printOutput('answerId', "Difference is: "+result);
+                        break;
+		case 3:
+    			result=Number(calNumOne)*Number(calNumTwo);
+                        printOutput('answerId', "Product is: "+result);
+                        break;
+		case 4:
+    			result=Number(calNumOne)/Number(calNumTwo);
+                        printOutput('answerId', "Quotient is: "+result);
+                        break;                                            
+	}        
+}
+
+function stringLarest(){
+ 	 var string=document.getElementById('stringOne').value;
+         const split=string.split(/\s+/);
+         var smallest=split[1];
+         var largest="";
+         console.log(smallest);
+         for(let word of split){                
+                if (word.length>largest.length){
+			largest=word;
+                }
+                if (word.length<smallest.length){
+			smallest=word;
+                }
+         }
+         printOutput('answerId', "Smallest: "+smallest);
+         printOutput('answerIdLarge', "Largest: "+largest);
+}
+
+
+function changeAlphabet(){
+ 	 var string=document.getElementById('stringOne').value;
+         let newString="";
+         for (let i=0;i<string.length; i++){
+                var char=string[i];
+                if(char=='z'){
+ 			newString+='a';
+                }
+                else{
+		        var value=char.charCodeAt(0);
+                        char=char.replace(char,String.fromCharCode(value+1));
+                        newString+=char;
+                }
+	}       
+         printOutput('answerId', "new string: "+newString);
+}
+
+function deleteConsonents(){
+        let string="Hello, have a good day..";
+	let vowels='aeiouAEIOU';
+        for(let i=0;i<string.length;i++){
+		if(vowels.includes(string[i])){
+                	continue;
+                }
+                else{
+                        console.log(string[i]);
+			string=string.replace(string[i],"");
+                }
+	}
+        printOutput('answerId', "new string: "+string);
+}
+
+function maxOccurence(){
+	 var string=document.getElementById('stringOne').value;
+         let ansDiv=document.getElementById('answerDiv');
+         let obj={};
+         let max=0;
+         let top="";
+         for(let i=0;i<string.length;i++){
+                var char=string[i];
+		if (char in obj){
+			obj[char]+=1;
+                 }
+                else{
+			obj[char]=1;
+                }
+         }
+         console.log(obj);
+         for (let key in obj){
+		let element=document.createElement('span');
+                element.textContent=key+" : "+obj[key];
+                ansDiv.appendChild(element);
+                if(obj[key]>max){
+                       max=obj[key];
+                       top=key;
+                }
+         }    
+         printOutput('answerId', "Alphabet with maximum occurrence: "+top);
+}
+
+function countDigit(){
+	var num=document.getElementById('stringOne').value;
+        let newNum=num;
+        let count=0;
+        while (newNum != 0){
+                newNum=Math.floor(newNum/10);
+                count+=1;    
+                console.log(newNum);               
+        }
+        printOutput('answerId', "Number of Digits in "+num+" is: "+count);
+}
+
+function weekDay(){
+	var num=Number(document.getElementById('stringOne').value);
+        var day="";
+        switch(num){
+        case 2:
+             day="Monday";
+             printOutput('answerId', "Corresponding day is: "+day);  
+             break;
+        case 3:
+             day="Tuesday";
+             printOutput('answerId', "Corresponding day is: "+day);  
+             break;
+	case 4:
+             day="Wednesday";
+             printOutput('answerId', "Corresponding day is: "+day);  
+             break;
+	case 5:
+             day="Thursday";
+             printOutput('answerId', "Corresponding day is: "+day);  
+             break;
+	case 6:
+             day="Friday";
+             printOutput('answerId', "Corresponding day is: "+day);  
+            break;
+	case 7:
+             day="Saturday";
+             printOutput('answerId', "Corresponding day is: "+day);  
+             break;
+	case 1:
+             day="Sunday";
+             printOutput('answerId', "Corresponding day is: "+day);  
+             break;
+        default:
+	     printOutput('answerId', "Enter correct day number");
+        }
+}
+
+function eligibility(){
+	let maths=Number(document.getElementById('maths').value);
+        let physics=Number(document.getElementById('physics').value);
+        let chemistry=Number(document.getElementById('chemistry').value);
+        let total=maths+physics+chemistry;
+        let totalMP=maths+physics;
+        printOutput('total', "Total marks: "+total);
+        printOutput('totalMp', "Maths and Physics toytal: "+totalMP);
+        if(maths>=65 && physics>=55 && chemistry>=50 &&(total>=190 || totalMP>=140) ){
+		printOutput('answerId', "Student is eligible");
+	}
+	else{
+		printOutput('answerId', "Student is not eligible");
+ 	}
+}
+
+function vowelReplace(){
+	let string=document.getElementById('stringOne').value;
+        let arr=[];
+        let newstring="";
+        let vowels="aeiouAEIOU";
+        for (let i=0;i<string.length;i++){
+		if (vowels.includes(string[i])){
+                	arr.unshift(string[i]);
+                }
+        }
+        for (let i=0;i<string.length;i++){
+                var char=string[i];
+		if (vowels.includes(char)){
+                	char=arr[0];
+                        newstring+=char
+                        arr.shift();
+                }
+                else{
+			newstring+=char;
+                }
+        }
+        printOutput('answerId',newstring);
+}
