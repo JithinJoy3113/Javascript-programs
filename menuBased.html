@@ -1,0 +1,39 @@
+ <!DOCTYPE html>
+<html> 
+    <head>
+        <title>Javascript</title>
+        <link rel="stylesheet "href="D:\bootstrap\bootstrap-5.3.3-dist\bootstrap-5.3.3-dist\css\bootstrap.min.css">
+    </head>
+    <body>
+        <div id="exitDiv" class="border border-dark p-3 d-none">
+             <span id="exitMessage" class="">Program exit</span>
+        </div>
+        <div class="questionDiv border border-dark p-3" id="questionDiv">           
+            <span class="question fw-bold" id="qstn">Q: Write a program to perform menu based arithmetic operations. </span><br><br>
+            <div id="optionDiv">
+                <span class="question">select 1 for Addition</span><br>
+                <span class="question">select 2 for Subtract</span><br>
+                <span class="question">select 3 for Multiplication</span><br>
+                <span class="question">select 4 for Division</span><br>
+                <span class="question">select 5 for Exit</span><br><br>
+            </div>
+             <div id="inputDiv">
+                   Enter string:<input class="form-control" id="numOne">
+             </div>
+            
+        </div>
+         <div class="d-none" id="inputNumbers">
+                Enter numbers:<input class="form-control" id="calNumTwo">
+                <input class="form-control" id="calNumThree">
+         </div>
+        <div class="button d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary d-none" onclick="menuBasedBtn()" id="menuStart">Start</button>
+            <button type="submit" class="btn btn-primary" onclick="menuBased()" id="menu">Select</button>
+            <button type="submit" class="btn btn-primary d-none" onclick="calculate()" id="calBtn">Calculate</button>
+        </div>
+        <div class="answerDiv d-flex flex-column border border-dark p-4 w-50 d-flex mx-auto d-none" id="ansDiv">               
+             <span id="answerId"></span>
+        </div>
+        <script src="js/questions.js"></script>
+    </body>
+</head>
