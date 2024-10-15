@@ -666,7 +666,7 @@ function changeAlphabet(){
  			newString+='a';
                 }
                 else{
-		        var value=char.charCodeAt(0);
+		        var value=char.charCodeAt();
                         char=char.replace(char,String.fromCharCode(value+1));
                         newString+=char;
                 }
@@ -676,17 +676,18 @@ function changeAlphabet(){
 
 function deleteConsonents(){
         let string="Hello, have a good day..";
-	let vowels='aeiouAEIOU';
+	let vowels="aeiouAEIOU";
+        let newString="";
+        let char=".,"
         for(let i=0;i<string.length;i++){
-		if(vowels.includes(string[i])){
-                	continue;
+		if(vowels.includes(string[i]) || string[i]==" " || char.includes(string[i])){
+                	newString+=string[i];
                 }
-                else{
-                        console.log(string[i]);
-			string=string.replace(string[i],"");
+                else{                      
+			continue;
                 }
 	}
-        printOutput('answerId', "new string: "+string);
+        printOutput('answerId', "New string: "+newString);
 }
 
 function maxOccurence(){
@@ -694,7 +695,7 @@ function maxOccurence(){
          let ansDiv=document.getElementById('answerDiv');
          let obj={};
          let max=0;
-         let top="";
+         let top=""; 
          for(let i=0;i<string.length;i++){
                 var char=string[i];
 		if (char in obj){
@@ -805,3 +806,237 @@ function vowelReplace(){
         }
         printOutput('answerId',newstring);
 }
+
+function empSalary(){
+	let salary=Number(document.getElementById('numOne').value);
+        let hra;
+        let da;
+        let grossSalary;
+        if (salary<=10000){
+		hra=(salary/100)*8;
+                da=(salary/100)*10;
+        }
+        else if (salary<=20000){
+		hra=(salary/100)*16;
+                da=(salary/100)*20;
+        }
+        else{
+		hra=(salary/100)*24;
+                da=(salary/100)*30;
+	}
+        grossSalary=salary+hra+da;
+        printOutput('answerId',"Gross salary of employee is: "+grossSalary);
+}
+
+function coneArea(){
+	let radius = Number(document.getElementById('numOne').value);
+        let length = Number(document.getElementById('numTwo').value);
+	let height = Number(document.getElementById('numThree').value);
+        let p = 3.14;
+        let area = p*radius*length + p*(radius)**2;
+        let volume =  (1/3)*(p*(radius)**2*height);
+        let surface = p*radius*length;
+        printOutput('answerIdArea',"Area of cone is: "+area);
+        printOutput('answerIdVolume',"\nVolume of cone is: "+volume);
+        printOutput('answerIdSurface',"\nLateral Surface area of cone is: "+surface);
+}
+
+function cubeArea(){
+        let l = Number(document.getElementById('numTwo').value);
+        let area = 6*(l)**2;
+        let volume =  l**3;
+        let surface = 4*(l*l);
+        printOutput('answerIdArea',"Area of cube is: "+area);
+        printOutput('answerIdVolume',"\nVolume of cube is: "+volume);
+        printOutput('answerIdSurface',"\nLateral Surface area of cube is: "+surface);
+}
+
+function cuboidArea(){
+	let length = Number(document.getElementById('numOne').value);
+        let width = Number(document.getElementById('numTwo').value);
+	let height = Number(document.getElementById('numThree').value);
+        let area = 2*(length*width) + 2*(length*height) + 2*(width*height);
+        let volume =  length*width*height;
+        let surface = (2*height)*(length+height);
+        printOutput('answerIdArea',"Area of cuboid is: "+area);
+        printOutput('answerIdVolume',"\nVolume of cuboid is: "+volume);
+        printOutput('answerIdSurface',"\nLateral Surface area of cuboid is: "+surface);
+}
+
+function cylinderArea(){
+	let radius = Number(document.getElementById('numOne').value);
+        let height = Number(document.getElementById('numTwo').value);
+        let p = 3.14;
+        let area = 2*p*(radius)**2 + 2*p*radius*height;
+        let volume =  p*(radius**2)*height;
+        let surface = 2*p*radius*height;
+        let surfaceBottom = p*(radius**2);
+        printOutput('answerIdArea',"Area of cylinder is: "+area);
+        printOutput('answerIdVolume',"\nVolume of cylinder is: "+volume);
+        printOutput('answerIdSurface',"\nLateral Surface area of cylinder is: "+surface);
+        printOutput('answerIdSurfaceBottom',"\nBottom or Top Surface area of cylinder is: "+surfaceBottom);
+}
+
+function sphereArea(){
+        let radius = Number(document.getElementById('numOne').value);
+        let p = 3.14;
+        let area = 4*p*(radius**2);
+        let sRadius = (Math.sqrt(area))/4*p;
+        let volume = 4*(p*(radius**3));
+        printOutput('answerIdArea',"Area of sphere is: "+area);
+        printOutput('answerIdVolume',"\nVolume of sphere is: "+volume);
+        printOutput('answerIdSurface',"\nRadius of sphere is: "+sRadius);
+}
+
+function palindromeReplace(){
+	let string = document.getElementById('numOne').value;
+        let symbol="*";
+        let words = string.split(" ");
+        for (let i=0;i<=words.length-1;i++){
+                var sub = "";
+                var str=words[i];
+		for(let i=str.length-1; i>=0 ; i--){
+                       sub+=str[i];
+                      
+                }
+   		 console.log(sub);
+                if (sub==str && sub.length != 1){
+                       console.log(sub);
+                       string=string.replace(str,symbol.repeat(str.length));
+                }
+        }        
+         printOutput('answerId',"String is: "+string);
+}
+
+
+function missingAlphabet(){
+	let string = document.getElementById('numOne').value;
+        let count=97; 
+        let missing=[];
+        while(count != 123){      
+              if(string.includes(String.fromCharCode(count))){
+		     count+=1;
+	      }
+              else{ 
+		     missing.push(String.fromCharCode(count));
+                     count+=1;
+ 	      }
+        }
+        if(missing.length==0){
+		printOutput('answerId',"No missing");
+        }
+        else{
+		printOutput('answerId',missing+" are missing");
+        }
+}
+
+function countNotes(){
+	let totalAmount = document.getElementById('numOne').value;
+        let tempAmount=totalAmount;
+        let notesArray=[500,200,100,50,20,10,5,2,1];
+        let count=0;
+        let noteNum={};
+        if (totalAmount==0){
+    		printOutput('answerId',"Amount is zero");
+	}
+	else{
+		for(let i=0; i<=notesArray.length-1; i++){
+                	var note=notesArray[i];
+                        while(note<=tempAmount){
+				tempAmount-=note;
+				count+=1;				
+			} 
+                        noteNum[note]=count;
+                        count=0;                          
+                }                
+	} 
+	let ansDiv=document.getElementById('ansDiv');
+        printOutput('answerId',"Number of Notes for "+totalAmount);
+        for(let key in noteNum){
+                if(noteNum[key]!=0){
+		     var element=document.createElement('div');
+                     element.textContent=(key+" : "+noteNum[key]);
+                      ansDiv.appendChild(element);
+                }	
+	}
+}
+
+function billCalculate(){
+	let units = document.getElementById('numOne').value;
+        let tempUnit=units;
+        let tarriffLess=0;
+        let tarriff50=0;
+        let tarriff100=0;
+        let tarriff200=0;
+        let blncUnit=0;
+        var diff=0;
+        if (tempUnit>=200){
+                diff=tempUnit-200;
+		tarriff200=diff*7.25;
+                tempUnit-=diff;                 
+        }
+        if(tempUnit>=100){
+                diff=tempUnit-100;
+		tarriff100=diff*5.65;
+                tempUnit-=diff;    
+        }
+        if(tempUnit>50){
+                diff=tempUnit-50;
+		tarriff50=diff*3.25;
+                tempUnit-=diff;              
+        }
+        if(tempUnit<=50){
+		tarriffLess=tempUnit*2.60;
+                tempUnit-=diff;    
+        }
+        let totalAmount = tarriffLess + tarriff50 + tarriff100 + tarriff200;
+        if(units>700){
+		totalAmount=totalAmount+(totalAmount/100)*0.5;
+	}
+        printOutput('answerId',"Total Bill is: "+totalAmount);
+}
+
+var arrayPrint=[];
+function printWithout(base, limit){
+	arrayPrint.push(base);
+        if (base==limit){
+		printOutput('answerId',arrayPrint);
+                return 1;
+        }
+        else{
+		printWithout(base+1, limit)
+	}	
+}
+
+function brackets(){
+	let string = document.getElementById('inputString').value;
+        let square=0;
+        let curly=0;
+        let paranthesis=0;
+        for(let i=0; i<=string.length-1; i++){
+		if(string[i]==")"){}
+	}
+}
+
+
+function byte(){
+	let code=[72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100];
+        let string="";
+        for (let i=0;i<code.length; i++){
+		var char=String.fromCharCode(code[i]);
+                string+=char;
+         }
+         printOutput('answerId',string);
+}
+
+
+
+
+
+
+
+
+
+
+
+
