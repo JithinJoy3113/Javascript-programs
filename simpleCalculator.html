@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>Javascript</title>
+        <link rel="stylesheet "href="D:\bootstrap\bootstrap-5.3.3-dist\bootstrap-5.3.3-dist\css\bootstrap.min.css">
+           
+    </head>
+    <body>
+        <div class="questionDiv border border-dark p-3">
+            <span class="question fw-bold">Q:simple Calculator</span><br>         
+        </div>
+        <div class="table d-flex justify-content-center  h-25 align-items-center">
+            <table>
+                <tr class="w-75">
+		     <td><input class="form-control" id="inputField" readonly></td>
+ 		     <td><button class="px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick('c')">C</button></td>
+                </tr>
+		 <tr class="w-100 d-flex justify-content-between">
+		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick(1)">1</button></td>
+ 		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick(2)">2</button></td>
+                     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick(3)">3</button></td>
+ 		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick('+')">+</button></td>
+                </tr>
+                <tr class=" d-flex justify-content-between">
+		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick(4)">4</button></td>
+ 		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick(5)">5</button></td>
+                     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick(6)">6</button></td>
+ 		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick('-')">-</button></td>
+                </tr>
+                <tr class=" d-flex justify-content-between">
+		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick(7)">7</button></td>
+ 		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick(8)">8</button></td>
+                     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick(9)">9</button></td>
+ 		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick('*')">*</button></td>
+                </tr>
+                <tr class=" d-flex justify-content-between">
+		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick('.')">.</button></td>
+ 		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick(0)">0</button></td>
+                     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick('=')">=</button></td>
+ 		     <td><button class="btnText px-4 py-3 rounded-circle" id="buttonValue" onClick="buttonClick('/')">/</button></td>
+                </tr>
+	    </table>            
+        </div>
+        <script src="js/calculator.js"></script>
+    </body>
+</head>

@@ -8,6 +8,7 @@
         <div id="exitDiv" class="border border-dark p-3 d-none">
              <span id="exitMessage" class="">Program exit</span>
         </div>
+        <div id="closeAll">
         <div class="questionDiv border border-dark p-3" id="questionDiv">           
             <span class="question fw-bold" id="qstn">Q: Write a program to perform menu based arithmetic operations. </span><br><br>
             <div id="optionDiv">
@@ -18,7 +19,7 @@
                 <span class="question">select 5 for Exit</span><br><br>
             </div>
              <div id="inputDiv">
-                   Enter string:<input class="form-control" id="numOne">
+                   Enter Option:<input class="form-control" id="numOne">
              </div>
             
         </div>
@@ -27,12 +28,12 @@
                 <input class="form-control" id="calNumThree">
          </div>
         <div class="button d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary d-none" onclick="menuBasedBtn()" id="menuStart">Start</button>
             <button type="submit" class="btn btn-primary" onclick="menuBased()" id="menu">Select</button>
             <button type="submit" class="btn btn-primary d-none" onclick="calculate()" id="calBtn">Calculate</button>
         </div>
         <div class="answerDiv d-flex flex-column border border-dark p-4 w-50 d-flex mx-auto d-none" id="ansDiv">               
              <span id="answerId"></span>
+        </div>
         </div>
         <script src="js/questions.js"></script>
     </body>

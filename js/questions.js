@@ -596,46 +596,70 @@ function fibonacci(){
        }        
 }
 
-function menuBased(){        
-        var option=Number(document.getElementById('numOne').value);
-        if (option==5){             
-                document.getElementById('questionDiv').style.display="none";
-                document.getElementById('exitDiv').classList.remove('d-none'); 
-                document.getElementById('menuStart').classList.remove('d-none');   
-             }
-        else{
-		document.getElementById('menu').style.visibility='hidden';
-                document.getElementById('calBtn').classList.remove('d-none');
-                document.getElementById('questionDiv').style.display="none";
-                document.getElementById('inputDiv').style.display='none';
-                document.getElementById('inputNumbers').classList.remove('d-none');
-                document.getElementById('ansDiv').classList.remove('d-none');
-	}
+var option;
+function menuBased() {
+  option = Number(document.getElementById("numOne").value);
+  if (option == 5) {
+    document.getElementById("closeAll").style.display = "none";
+    document.getElementById("exitDiv").classList.remove("d-none");
+  } else {
+    document.getElementById("inputDiv").style.display = "none";
+    document.getElementById("calBtn").classList.remove("d-none");
+    document.getElementById("calBtn").style.display = "flex";
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("inputNumbers").classList.remove("d-none");
+    document.getElementById("inputNumbers").style.display = "flex";
+    document.getElementById("inputNumbers").style.flexDirection = "column";
+    document.getElementById("optionDiv").style.display = "none";
+    numOne.value = "";
+  }
 }
-function calculate(){
-	var option=Number(document.getElementById('numOne').value);
-        var calNumOne=document.getElementById('calNumTwo').value;
-        var calNumTwo=document.getElementById('calNumThree').value;
-        let result;
-        switch (option){
-        	case 1:    
-                        console.log(option);                
-    			result=Number(calNumOne)+Number(calNumTwo);
-                        printOutput('answerId', "Sum is: "+result);
-                        break;
-		case 2: 
-    			result=Number(calNumOne)-Number(calNumTwo);
-                        printOutput('answerId', "Difference is: "+result);
-                        break;
-		case 3:
-    			result=Number(calNumOne)*Number(calNumTwo);
-                        printOutput('answerId', "Product is: "+result);
-                        break;
-		case 4:
-    			result=Number(calNumOne)/Number(calNumTwo);
-                        printOutput('answerId', "Quotient is: "+result);
-                        break;                                            
-	}        
+function display() {
+  document.getElementById("optionDiv").style.display = "flex";
+  document.getElementById("optionDiv").style.flexDirection = "column";
+  document.getElementById("calBtn").style.display = "d-none";
+  document.getElementById("inputDiv").style.display = "flex";
+  document.getElementById("inputNumbers").style.display = "none";
+  document.getElementById("calBtn").style.display = "none";
+  document.getElementById("menu").style.display = "flex";
+  calNumTwo.value = "";
+  calNumThree.value = "";
+  return;
+}
+function calculate() {
+  var numOne = Number(document.getElementById("calNumTwo").value);
+  var numTwo = Number(document.getElementById("calNumThree").value);
+  let opt = option;
+  let sum = 0;
+  let diff = 0;
+  let quotient = 0;
+  let product = 0;
+  switch (opt) {
+    case 1:
+      sum = numOne + numTwo;
+      document.getElementById("ansDiv").classList.remove("d-none");
+      printOutput("answerId", numOne+"+"+numTwo+"=" +sum);
+      display();
+      break;
+    case 2:
+      diff = numOne - numTwo;
+      document.getElementById("ansDiv").classList.remove("d-none");
+      printOutput("answerId", numOne+"-"+numTwo+"=" +diff);
+      display();
+      break;
+    case 3:
+      product = numOne * numTwo;
+      document.getElementById("ansDiv").classList.remove("d-none");
+      printOutput("answerId", numOne+"*"+numTwo+"=" +product);
+      display();
+      break;
+    case 4:
+      quotient = numOne / numTwo;
+      document.getElementById("ansDiv").classList.remove("d-none");
+      printOutput("answerId", numOne+"/"+numTwo+"=" +quotient);
+      display();
+      break;
+  }
 }
 
 function stringLarest(){
@@ -851,6 +875,33 @@ function cubeArea(){
         printOutput('answerIdSurface',"\nLateral Surface area of cube is: "+surface);
 }
 
+function calculator(num) {
+  let numOne = Number(document.getElementById("numOne").value);
+  let numTwo = Number(document.getElementById("numTwo").value);
+  let sum = 0;
+  let diff = 0;
+  let quotient = 0;
+  let product = 0;
+  switch (num) {
+    case 1:
+      sum = numOne + numTwo;
+      printOutput("answerId", "Sum is: " + sum);
+      break;
+    case 2:
+      diff = numOne - numTwo;
+      printOutput("answerId", "Difference is: " + diff);
+      break;
+    case 3:
+      product = numOne * numTwo;
+      printOutput("answerId", "Product is: " + product);
+      break;
+    case 4:
+      quotient = numOne / numTwo;
+      printOutput("answerId", "Quotient is: " + quotient);
+      break;
+  }
+}
+  
 function cuboidArea(){
 	let length = Number(document.getElementById('numOne').value);
         let width = Number(document.getElementById('numTwo').value);
@@ -896,12 +947,9 @@ function palindromeReplace(){
                 var sub = "";
                 var str=words[i];
 		for(let i=str.length-1; i>=0 ; i--){
-                       sub+=str[i];
-                      
+                       sub+=str[i];                     
                 }
-   		 console.log(sub);
                 if (sub==str && sub.length != 1){
-                       console.log(sub);
                        string=string.replace(str,symbol.repeat(str.length));
                 }
         }        
@@ -911,23 +959,27 @@ function palindromeReplace(){
 
 function missingAlphabet(){
 	let string = document.getElementById('numOne').value;
-        let count=97; 
         let missing=[];
-        while(count != 123){      
-              if(string.includes(String.fromCharCode(count))){
-		     count+=1;
-	      }
-              else{ 
-		     missing.push(String.fromCharCode(count));
-                     count+=1;
- 	      }
-        }
-        if(missing.length==0){
-		printOutput('answerId',"No missing");
-        }
-        else{
-		printOutput('answerId',missing+" are missing");
-        }
+        let correct=[];
+        for (let i=0; i<string.length-1; i++){
+                correct.push(string[i]);
+		var value=string[i].charCodeAt();  
+                var next=value+1;
+                var valueNext=string[i+1].charCodeAt();              
+                while(next!=valueNext){
+			missing.push(String.fromCharCode(next));
+                        correct.push(String.fromCharCode(next));
+                        next+=1;
+		}
+          }
+          if(missing.length==0){
+                printOutput('answerId',"No missing alphabets");
+          }
+          else{
+                correct.push(string[string.length-1]);
+		printOutput('answerId',"Missing alphabets are: "+missing);
+                printOutput('answerCorrect',"correct order is: "+correct);
+          }
 }
 
 function countNotes(){
@@ -1008,14 +1060,29 @@ function printWithout(base, limit){
 	}	
 }
 
-function brackets(){
-	let string = document.getElementById('inputString').value;
-        let square=0;
-        let curly=0;
-        let paranthesis=0;
-        for(let i=0; i<=string.length-1; i++){
-		if(string[i]==")"){}
-	}
+function brackets() {
+  let string = document.getElementById("inputString").value;
+  var bracket = [];
+  var opening = ["(", "{", "["];
+  var closing = [")", "}", "]"];
+  var bracketTypes = { ")": "(", "}": "{", "]": "[" };
+  var result = true;
+  for (let char of string) {
+    if (opening.includes(char)) {
+      bracket.push(char);
+    } else if (closing.includes(char)) {
+      if (bracket.length === 0 || bracket.pop() != bracketTypes[char]) {
+        printOutput('answerId',"invalid");
+        result = false;
+        break;
+      }
+    }
+  }
+  if (bracket.length == 0 && result == true) {
+    printOutput('answerId',"valid");
+  } else {
+    printOutput('answerId',"invalid");
+  }
 }
 
 
