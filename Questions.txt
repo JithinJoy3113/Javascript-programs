@@ -1,4 +1,4 @@
-## Basic - JS Programing fundamentals  : Level-1
+  ## Basic - JS Programing fundamentals  : Level-1
 
 Write JS Programs for following questions:
  
